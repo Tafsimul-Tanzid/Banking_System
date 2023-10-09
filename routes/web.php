@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+/* Route::get('/', function () {
     return view('welcome');
-});
+}); */
 Route::post('/users', 'UserController@store');
 Route::post('/login', 'UserController@login');
 Route::get('/', 'TransactionController@index');

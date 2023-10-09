@@ -11,10 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('transactions', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
+        
+            Schema::create('transactions', function (Blueprint $table) {
+                $table->id();
+                $table->unsignedBigInteger('user_id');
+                $table->enum('transaction_type', ['deposit', 'withdrawal']);
+                $table->double('amount');
+                $table->decimal('fee', 10, 2);
+                $table->date('date');
+                $table->timestamps();
+                $table->foreign('user_id')->references('id')->on('users');
+            });
+        
     }
 
     /**
